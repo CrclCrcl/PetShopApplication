@@ -21,23 +21,23 @@ public class ProductsController {
     }
 
 
-    @PostMapping("/productses")
+    @PostMapping("/products")
     ResponseEntity<Products> CreateProduct(@RequestBody @Valid Products toCreate){
         Products result = repository.save(toCreate);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
 
     }
-    @GetMapping (value = "/productses",params = {"!sort","!size","!page"})
+    @GetMapping (value = "/products",params = {"!sort","!size","!page"})
     ResponseEntity<?> readAllProducts() {
         logger.warn("Exposing All Products");
         return ResponseEntity.ok(repository.findAll());
     }
-    @GetMapping (value = "/productses")
+    @GetMapping (value = "/products")
     ResponseEntity<?> readAllProducts(Pageable page){
         logger.info("Custom Page");
         return ResponseEntity.ok(repository.findAll((org.springframework.data.domain.Pageable)page));
     }
-    @GetMapping (value = "/productses/{id}")
+    @GetMapping (value = "/products/{id}")
     ResponseEntity<Products> readSpecificProduct(@PathVariable int id) {
             return repository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 

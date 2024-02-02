@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "PRODUCTS")
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "description")
-    @NotBlank(message = "Product's description must be not null")
     private String description;
-    /*@NotBlank(message = "Product's name must be not null")*/
+
     @Column(name="Name")
     private String name;
 

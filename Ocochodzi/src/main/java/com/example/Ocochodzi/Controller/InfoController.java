@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class InfoController {
+    @Autowired
     InfoController(final DataSourceProperties datasource, final ProductsConfingurationProperties myproperty) {
         this.datasource = datasource;
         this.myproperty = myproperty;
@@ -22,8 +23,8 @@ public class InfoController {
     String url(){
         return datasource.getUrl();
     }
-    @GetMapping("/info/myproperty")
+    @GetMapping("/info/property")
     boolean myproperty(){
-        return myproperty.isAllowToMultipleProductsFromTemplate();
+        return myproperty.getTemplate().isAllowToMultipleProducts();
     }
 }

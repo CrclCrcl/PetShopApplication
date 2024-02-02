@@ -6,6 +6,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties("products")
 public class ProductsConfingurationProperties {
+    public static class Template {
+        private boolean allowToMultipleProducts;
+        public boolean isAllowToMultipleProducts() { return allowToMultipleProducts; }
+
+        public void setAllowToMultipleProducts(final boolean allowToMultipleProducts) {
+            this.allowToMultipleProducts = allowToMultipleProducts;
+        }
+
+
+    }
     private Template template;
     public Template getTemplate() {
         return template;
@@ -16,18 +26,5 @@ public class ProductsConfingurationProperties {
     }
 
 
-    public boolean allowToMultipleProductsFromTemplate;
 
-    public static class Template{
-        private boolean allowToMultpileProducts;
-       public boolean isAllowToMultpileProducts() {
-            return allowToMultpileProducts;
-        }
-
-       public void setAllowToMultpileProducts(final boolean allowToMultpileProducts) {
-            this.allowToMultpileProducts = allowToMultpileProducts;
-        }
-
-
-    }
 }
